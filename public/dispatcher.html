@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="de">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Leitstelle – Video Empfang</title>
+
+  <link rel="stylesheet" href="css/base.css"/>
+  <link rel="stylesheet" href="css/dispatcher.css"/>
+</head>
+<body>
+
+<main class="shell">
+  <header class="topbar">
+    <h1>Leitstelle – Eingehender Notruf</h1>
+    <div class="row">
+      <span class="badge">Raum: <strong id="roomInfo">–</strong></span>
+      <span class="badge" id="statusBadge" data-state="warn">
+        <span class="dot"></span><span id="status">getrennt</span>
+      </span>
+    </div>
+  </header>
+
+  <section class="card" style="padding:16px;">
+    <div class="toolbar">
+      <button id="create" class="btn btn-primary">🔗 Link erzeugen</button>
+
+      <div class="linkbox">
+        <input id="callerLink" class="input" type="text" readonly value="–" />
+      </div>
+
+      <button id="copyLink" class="btn btn-icon">📋</button>
+      <button id="muteRemote" class="btn btn-ghost">🔇 Ton aus</button>
+    </div>
+
+    <div class="stage">
+      <div class="video overlay-wrap" id="videoWrap">
+        <video id="remote" playsinline autoplay></video>
+
+        <div id="overlayLayer"></div>
+        <div class="drop-hint">Symbole unten ziehen und auf das Video legen</div>
+
+        <div id="audioOnlyOverlay">AUDIO-ONLY</div>
+      </div>
+    </div>
+
+    <div class="palette" id="palette">
+      <div class="palette-item" draggable="true" data-kind="arrow-up"    title="Pfeil nach oben">⬆️</div>
+      <div class="palette-item" draggable="true" data-kind="arrow-down"  title="Pfeil nach unten">⬇️</div>
+      <div class="palette-item" draggable="true" data-kind="arrow-left"  title="Pfeil nach links">⬅️</div>
+      <div class="palette-item" draggable="true" data-kind="arrow-right" title="Pfeil nach rechts">➡️</div>
+      <div class="palette-item" draggable="true" data-kind="circle"      title="Markierung (Kreis)">⭕</div>
+
+      <div class="help">Tipp: Symbol ziehen • verschieben: Drag • doppelklick: löschen</div>
+    </div>
+
+    <div style="margin-top:18px;">
+      <h2 style="font-size:15px;">Letztes Foto</h2>
+      <img id="photoPreview" alt="Letztes empfangenes Foto"
+           style="width:100%;max-width:360px;border-radius:12px;background:#000;cursor:zoom-in;" />
+      <p id="photoHint" style="font-size:12px;opacity:.7;">Noch kein Foto empfangen.</p>
+    </div>
+  </section>
+</main>
+
+<audio id="remoteAudio" autoplay></audio>
+
+<script src="js/shared.js"></script>
+<script src="js/dispatcher.js"></script>
+</body>
+</html>

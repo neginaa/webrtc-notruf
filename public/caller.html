@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="de">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Anrufer</title>
+
+  <link rel="stylesheet" href="css/base.css"/>
+  <link rel="stylesheet" href="css/caller.css"/>
+</head>
+<body>
+
+<main class="caller-shell">
+
+  <header class="caller-header">
+
+    <div class="row">
+      <span class="badge">Raum: <strong id="roomLabel">–</strong></span>
+
+      <span class="badge" id="statusBadge" data-state="warn">
+        <span class="dot"></span>
+        <span id="statusText">bereit</span>
+      </span>
+    </div>
+
+    <p class="caller-sub">
+      Bitte halten Sie das Telefon ruhig und achten Sie auf eine klare Sicht.
+    </p>
+  </header>
+
+  <section class="caller-card">
+    <div class="caller-video" id="callerVideoWrap" style="position:relative;">
+      <video id="local" autoplay playsinline muted></video>
+
+      <div id="callerOverlayLayer"></div>
+
+      <div class="caller-overlay-hint" id="callerOverlayHint" style="display:none;">
+        Leitstelle gibt Hinweise (Symbole im Bild)
+      </div>
+    </div>
+
+    <div class="caller-controls">
+      <div id="controlsStart" class="controls controls-start">
+        <button id="start" class="btn btn-primary btn-big">Kamera starten</button>
+      </div>
+
+      <div id="controlsInCall" class="controls controls-incall is-hidden">
+        <button id="audioOnly" class="btn btn-ghost" disabled>Nur Audio</button>
+        <button id="sendPhoto" class="btn btn-ghost" disabled>📷 Foto senden</button>
+        <button id="hangup" class="btn btn-danger">Beenden</button>
+      </div>
+    </div>
+
+    <p class="caller-footer-text" id="footerHint">
+      Bei schlechter Verbindung empfehlen wir „Nur Audio“ oder das Senden eines Fotos.
+    </p>
+  </section>
+
+  <audio id="remoteAudio" autoplay></audio>
+  <canvas id="snapshotCanvas" style="display:none;"></canvas>
+
+</main>
+
+<script src="js/shared.js"></script>
+<script src="js/caller.js"></script>
+</body>
+</html>
